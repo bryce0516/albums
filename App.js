@@ -23,13 +23,19 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import Header from './src/components/header'
 import AlbumList from './src/components/AlbumList'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import reducers from './src/reducers'
+
 
 const App: () => React$Node = () => {
   return (
-    <View>
-      <Header headerText='Albums'/>
-      <AlbumList />
-    </View>
+    <Provider store={createStore(reducers)}>
+      <View style={{flex:1}}>
+        <Header headerText='Albums'/>
+        <AlbumList />
+      </View>
+    </Provider>
   );
 };
 
